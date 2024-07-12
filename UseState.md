@@ -39,8 +39,7 @@ When updating objects and arrays, create new objects and arrays to adhere to the
 const [obj, setObj] = useState({ key: 'value' });
 setObj(prevObj => ({ ...prevObj, key: 'newValue' }));
 
-// update array
+// update arrays
 const [arr, setArr] = useState([1, 2, 3]);
 setArr(prevArr => [...prevArr, 4]);
 ```
-

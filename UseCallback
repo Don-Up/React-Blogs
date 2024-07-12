@@ -1,0 +1,108 @@
+# UseCallback
+
+## Usage
+
+`useCallback` is a React Hook used to cache a function instance and avoid re-creating the function on each render, thus optimizing performance. It takes an inline callback function and a dependency array, returning a new callback function only when the dependency items change.
+
+```js
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]);
+```
+
+## Dependences
+
+- 如果依赖项数组为空，`useCallback` 的回调函数只会在组件挂载时创建一次，并保持不变。
+- 如果依赖项数组包含特定值，`useCallback` 的回调函数会在这些依赖项发生变化时重新创建。
+
+```js
+const memoizedCallback = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]);
+// memoizedCallback 只会在 a 或 b 改变时重新创建
+```
+
+## Performance optimization
+
+- Using `useCallback` can avoid unnecessary re-renders of child components due to changes in function references, especially when the function is passed to a child component as a prop.
+- Similar to `useMemo`, don't overuse `useCallback`; use it only when there is a performance bottleneck. Otherwise, it will add unnecessary complexity.
+
+## Differences from useMemo
+
+- `useMemo` 用于缓存计算结果，返回缓存的值。
+- `useCallback` 用于缓存函数实例，返回缓存的函数。
+
+## Methods to update objects and arrays
+
+更新对象和数组时，`useCallback` 可以帮助避免不必要的重新渲染。
+
+```js
+const memoizedCallback = useCallback(() => {
+  // Some operation
+}, []);
+// memoizedCallback 在组件生命周期内保持不变
+```
+
+## Example Code
+
+### Example 1: 避免不必要的子组件重新渲染
+
+```js
+import React, { useState, useCallback } from 'react';
+
+const ChildComponent = React.memo(({ onClick }) => {
+  console.log('ChildComponent rendered');
+  return <button onClick={onClick}>Click me</button>;
+});
+
+const ParentComponent = () => {
+  const [count, setCount] = useState(0);
+
+  const handleClick = useCallback(() => {
+    console.log('Button clicked');
+  }, []);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <ChildComponent onClick={handleClick} />
+    </div>
+  );
+};
+
+export default ParentComponent;
+```
+
+### Example 2: 优化回调函数传递
+
+```js
+import React, { useState, useCallback } from 'react';
+
+const ExpensiveOperationButton = ({ onClick }) => {
+  console.log('ExpensiveOperationButton rendered');
+  return <button onClick={onClick}>Perform Expensive Operation</button>;
+};
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const handleExpensiveOperation = useCallback(() => {
+    console.log('Performing expensive operation');
+  }, []);
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count + 1)}>Increment Count</button>
+      <ExpensiveOperationButton onClick={handleExpensiveOperation} />
+    </div>
+  );
+};
+
+export default App;
+```
+
+## Summary
+
+`useCallback` 是一个强大的工具，用于缓存函数实例，防止每次渲染时重新创建函数，从而优化性能。理解何时使用 `useCallback` 以及如何使用它来优化 React 应用程序的性能，是编写高效 React 组件的重要技能。请注意，不要滥用 `useCallback`，只在确实有性能瓶颈的情况下使用它。

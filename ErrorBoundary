@@ -1,0 +1,72 @@
+# ErrorBoundary Review Process
+
+First of all,  an ErrorBoundary is a class component：
+
+```ts
+class ErrorBoundary extends Componentt<?,?>{
+
+}
+```
+
+The first generic type is `ErrorBoundaryProps`. Since `ErrorBoundary` should be used as a parent component, define it like this:
+
+```ts   
+interface ErrorBoundaryProps{
+	children: ReactNode
+}
+```
+
+The second generic type is `ErrorBoundaryState`. We require three properties: `hasError`, `error`, and `errorInfo`.
+
+  ```ts
+interface ErrorBoundaryState{
+   hasError:boolean
+   error?:Error
+   errorInfo?:ErrorInfo
+}
+  ```
+
+Next, we need to initialize the state within the constructor function.
+
+```ts
+constructor(props:ErrorBoundaryProps) {
+    super(props);
+    this.state = {hasError:false, error:null, errorInfo:null}
+}
+```
+
+Before capturing and handling an error, you need to update the error state.
+
+```ts
+static getDerivedStateFromError(error:Error):ErrorBoundaryState{
+	return {hasError:true, error, errorInfo:null}
+}
+```
+
+Then capture the error and execute the side-effect within the `componentDidCatch` method.
+
+```ts
+componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error("Uncaught error:",error,errorInfo)
+    this.setState({error, errorInfo})
+}
+```
+
+Finally, in the `render` method, return the fallback UI or child components based on whether the `hasError` property of the state is true.
+
+```tsx
+render() {
+    if(this.state.hasError){
+        return (<div>
+                    <h1>Something went wrong.</h1>
+                    <details style={{whiteSpace:"pre-wrap"}}>
+                        {this.state.error && this.state.error.toString()}
+                    </details>
+                </div>)
+    }
+    return this.props.children;
+}
+```
+
+
+
