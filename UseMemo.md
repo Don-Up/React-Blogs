@@ -15,7 +15,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 ```js
 const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
-// memoizedValue 只会在 a 或 b 改变时重新计算
+// memoizedValue is recalculated only when a or b changes.
 ```
 
 ## Performance Optimazation
@@ -34,7 +34,7 @@ const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
 
 ```javascript
 const memoizedObject = useMemo(() => ({ a: 1, b: 2 }), []);
-// memoizedObject 在组件生命周期内保持不变
+// memoizedObject remains unchanged throughout the component's lifecycle.
 ```
 
 ## Example Code
@@ -49,7 +49,7 @@ import React, { useMemo, useState } from 'react';
 const ExpensiveComponent = ({ a, b }) => {
   const expensiveValue = useMemo(() => {
     console.log('Calculating expensive value...');
-    return a + b; // 这里可以是更复杂的计算
+    return a + b; // More complex calculations can be performed here.
   }, [a, b]);
 
   return <div>Expensive Value: {expensiveValue}</div>;
@@ -100,4 +100,4 @@ export default ComponentWithMemoizedObject;
 
 ## Summary
 
-`useMemo` 是一个强大的工具，用于优化性能，通过记忆某些计算结果，避免不必要的重新计算。Understanding when to use `useMemo` and how to use it to optimize React application performance is an important skill for writing efficient React components. 请注意，不要滥用 `useMemo`，只在确实有性能瓶颈的情况下使用它。
+`useMemo` is a powerful tool for optimizing performance by memoizing certain calculation results to avoid unnecessary recalculations. Understanding when to use `useMemo` and how to use it to optimize React application performance is an important skill for writing efficient React components. Please keep in mind, don't overuse `useMemo`; use it only when there are significant performance bottlenecks.

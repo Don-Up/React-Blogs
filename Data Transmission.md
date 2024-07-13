@@ -1,7 +1,5 @@
 # Data Transmission
 
-### Comprehensive review of data transmission among components
-
 In React applications, data transmission among components is a very common and essential operation. There are several primary ways of data transmission as follows:
 
 1. Passing data downward using props.

@@ -4,33 +4,28 @@ In React, State update is the critical mechanism driving component rendering. St
 
 ## Review
 
-1. Regarding state updates of arrays
+1. **Regarding state updates of arrays**
 
-   1. Add elements: using the spread operator, `[...arr, newElement]`
-   2. Remove elements：using the filter method, arr.filter(item=>filter condition)
-   3. Modify elements：using the map method+tenary operator，arr.map(item=>Whether found the target?new element : item)
+   1. **Add elements**: using the spread operator, `[...arr, newElement]`
+   2. **Remove elements**：using the filter method, `arr.filter(item=>filter condition)`
+   3. **Modify elements**：using the map method+tenary operator，`arr.map(item=>Whether found the target?new element : item)`
 
-2. Regarding state updates of objects
+2. **Regarding state updates of objects**
 
-   1. Add properties: Use the spread operator, { ...prevUser, new prop name: old prop name }
-
-   2. Remove properties: Use the spread operator to extract the properties that need to be retained, and then return them.
+   1. **Add or modify properties**: Use the spread operator and replace old properties with new ones.
 
       ```tsx
-      const {needDeleteProp, ...otherProps} = oldObject
-      setState({...otherProps})
+      setState({...oldObject, newProp:newValue})
       ```
 
-  3. Modify properties: Use the spread operator and replace old properties with new ones.
+   2. **Remove properties**: Use the spread operator to extract the properties that need to be retained, and then return them.
 
-       ```tsx
-     setState({...oldObject, newProp:newValue})
-       ```
+   ```tsx
+   const {needDeleteProp, ...otherProps} = oldObject
+   setState({...otherProps})
+   ```
 
-
-​    
-
-### State updates in class components
+## State updates in class components
 
 #### 1. State Initialization
 
@@ -91,7 +86,11 @@ this.setState((prevState) => ({
   items: prevState.items.map((item, index) => 
     index === itemIndexToModify ? newValue : item)
 }));
+```
 
+
+
+```js
 // 更新对象
 
 // 添加或更新属性
@@ -111,7 +110,9 @@ this.setState((prevState) => ({
 }));
 ```
 
-### State updates in functional components
+
+
+## State updates in functional components
 
 #### 1. Use useState to initialize state
 
@@ -176,7 +177,7 @@ setUser((prevUser) => {
 setUser((prevUser) => ({ ...prevUser, age: newAge }));
 ```
 
-### Use `useReducer` to manage complex state
+## Use `useReducer` to manage complex state
 
 #### 1. Initialize state
 

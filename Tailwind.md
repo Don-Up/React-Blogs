@@ -202,7 +202,7 @@ The following is a comprehensive review of how to implement various common Flex 
 
 ### 示例
 
-```
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>

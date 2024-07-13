@@ -1,15 +1,15 @@
-# CSS
+### CSS
 
-在 React 中使用 CSS 有多种方法，从传统的 CSS 文件到现代的 CSS-in-JS 解决方案。以下是总结在 React 中使用 CSS 的常见方法，尤其是使用原生 CSS 的方法：
+There are various ways to use CSS in React, ranging from traditional CSS files to modern CSS-in-JS solutions. Here is a summary of common methods for using CSS in React, especially using native CSS:
 
-### 1. 外部 CSS 文件
+### 1. External CSS File
 
-这是最常见的方法，将 CSS 样式定义在单独的 `.css` 文件中，然后在组件中引入。
+This is the most common method where CSS styles are defined in a separate `.css` file and then imported into the component.
 
-#### 步骤
+#### Steps
 
-1. **创建 CSS 文件**：
-   创建一个 CSS 文件，例如 `styles.css`：
+1. **Create a CSS File**:
+   Create a CSS file, for example, `styles.css`:
 
    ```css
    .container {
@@ -18,8 +18,8 @@
    }
    ```
 
-2. **引入 CSS 文件**：
-   在需要使用样式的 React 组件中引入该 CSS 文件：
+2. **Import the CSS File**:
+   Import the CSS file into the React component where you need the styles:
 
    ```javascript
    import './styles.css';
@@ -31,11 +31,11 @@
    export default App;
    ```
 
-### 2. 内联样式
+### 2. Inline Styles
 
-在组件的 JSX 中直接使用 `style` 属性定义样式。内联样式是一个对象，键是驼峰式命名的 CSS 属性名，值是样式值。
+Define styles directly in the JSX using the `style` attribute. Inline styles are objects where the keys are camelCased CSS property names and the values are the style values.
 
-#### 示例
+#### Example
 
 ```javascript
 function App() {
@@ -50,14 +50,14 @@ function App() {
 export default App;
 ```
 
-### 3. CSS 模块
+### 3. CSS Modules
 
-CSS 模块允许你将 CSS 文件的样式作用域限定在一个特定的组件中，避免全局样式冲突。CSS 模块的文件名通常以 `.module.css` 结尾。
+CSS Modules allow you to scope CSS styles to a specific component, preventing global style conflicts. CSS Module filenames typically end with `.module.css`.
 
-#### 步骤
+#### Steps
 
-1. **创建 CSS 模块文件**：
-   创建一个 CSS 模块文件，例如 `styles.module.css`：
+1. **Create a CSS Module File**:
+   Create a CSS Module file, for example, `styles.module.css`:
 
    ```css
    .container {
@@ -66,8 +66,8 @@ CSS 模块允许你将 CSS 文件的样式作用域限定在一个特定的组�
    }
    ```
 
-2. **引入 CSS 模块文件**：
-   在组件中引入并使用该 CSS 模块：
+2. **Import the CSS Module File**:
+   Import and use the CSS Module in the component:
 
    ```javascript
    import styles from './styles.module.css';
@@ -79,20 +79,20 @@ CSS 模块允许你将 CSS 文件的样式作用域限定在一个特定的组�
    export default App;
    ```
 
-### 4. 使用 Sass/SCSS
+### 4. Using Sass/SCSS
 
-Sass 是一种 CSS 预处理器，允许使用变量、嵌套规则、混合等功能来增强 CSS。你可以在 React 项目中使用 `.scss` 文件。
+Sass is a CSS preprocessor that allows you to use variables, nested rules, mixins, and more to enhance your CSS. You can use `.scss` files in a React project.
 
-#### 步骤
+#### Steps
 
-1. **安装 Sass**：
+1. **Install Sass**:
 
    ```bash
    npm install sass
    ```
 
-2. **创建 SCSS 文件**：
-   创建一个 SCSS 文件，例如 `styles.scss`：
+2. **Create an SCSS File**:
+   Create an SCSS file, for example, `styles.scss`:
 
    ```scss
    $primary-color: #f4f4f4;
@@ -103,8 +103,8 @@ Sass 是一种 CSS 预处理器，允许使用变量、嵌套规则、混合等�
    }
    ```
 
-3. **引入 SCSS 文件**：
-   在组件中引入该 SCSS 文件：
+3. **Import the SCSS File**:
+   Import the SCSS file into the component:
 
    ```javascript
    import './styles.scss';
@@ -116,17 +116,17 @@ Sass 是一种 CSS 预处理器，允许使用变量、嵌套规则、混合等�
    export default App;
    ```
 
-### 5. 动态类名
+### 5. Dynamic Class Names
 
-有时你需要根据组件的状态或属性动态地设置类名，`classnames` 库可以帮助你方便地处理这种情况。
+Sometimes you need to set class names dynamically based on the component's state or props. The `classnames` library can help with this.
 
-#### 安装 `classnames`
+#### Install `classnames`
 
 ```bash
 npm install classnames
 ```
 
-#### 使用 `classnames`
+#### Using `classnames`
 
 ```javascript
 import classNames from 'classnames';
@@ -141,9 +141,9 @@ function App({ isActive }) {
 export default App;
 ```
 
-### 6. 媒体查询和响应式设计
+### 6. Media Queries and Responsive Design
 
-通过在 CSS 文件或 CSS 模块中使用媒体查询，您可以实现响应式设计。
+You can achieve responsive design by using media queries in CSS files or CSS Modules.
 
 ```css
 /* styles.css */
@@ -159,7 +159,7 @@ export default App;
 }
 ```
 
-在组件中引入：
+Import in the component:
 
 ```javascript
 import './styles.css';
@@ -171,7 +171,6 @@ function App() {
 export default App;
 ```
 
-### 总结
+### Summary
 
-在 React 中使用 CSS 的方法多种多样，从传统的外部 CSS 文件到现代的 CSS-in-JS 解决方案，每种方法都有其独特的优势和适用场景。通过选择合适的方法，可以在项目中高效地管理和应用样式，提高代码的可维护性和可读性。
-
+There are various ways to use CSS in React, from traditional external CSS files to modern CSS-in-JS solutions. Each method has its unique advantages and appropriate use cases. By choosing the right method, you can efficiently manage and apply styles in your project, improving code maintainability and readability.

@@ -1,4 +1,4 @@
-# 动画和过渡
+# Animation & Transition
 
 ## 原生CSS
 

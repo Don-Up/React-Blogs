@@ -1,37 +1,36 @@
 # UseRef
 
-`useRef` 是一个用于在函数组件中创建一个可变的、持久的引用对象的 React Hook。它通常用于直接访问 DOM 元素、持久化状态、保存实例变量以及控制动画等。
+`useRef` is a React hook used to create a mutable and persistent reference object in functional components. It is usually used to directly access DOM elements, persist state, save instance variables, and control animations, among other things.
 
-### 1. 基本用法
+### 1. Basic Usage
 
-1. 返回一个对象，例如 `xxRef`，唯一属性是 `current`。
-2. 函数传入初始值。
+Pass in an initial value and return an object, such as `xxRef`, which contains a unique property `current`.
 
 ```javascript
 const xxRef = useRef(initialValue);
 ```
 
-### 2. 访问 DOM 元素
+### 2. Access DOM elements
 
-1. 声明一个 ref 对象：
+1. Declare a ref object:
 
    ```javascript
    const inputRef = useRef(null);
    ```
 
-2. 指定 ref 对象：
+2. Specify the ref object:
 
    ```jsx
    <input ref={inputRef} />
    ```
 
-3. 调用 DOM 元素方法：
+3. Call methods of DOM elements:
 
    ```javascript
    inputRef.current.focus();
    ```
 
-### 3. 持久化状态
+### 3. State Persistent
 
 In asynchronous operations, `useRef` can persist state, enabling access to the latest state value.
 
@@ -64,9 +63,9 @@ function Timer() {
 export default Timer;
 ```
 
-### 4. 保存实例变量
+### 4. Save instance variable
 
-`useRef` 可以用来保存组件实例的变量，避免在每次渲染时重新创建。
+`useRef` can be used to save component instance variables, avoiding re-creation on each render.
 
 ```javascript
 import React, { useRef } from 'react';
@@ -82,7 +81,7 @@ function RenderCounter() {
 export default RenderCounter;
 ```
 
-### 5. 控制动画
+### 5. Control Animation
 
 `useRef` can be used to store relevant state or references for animation, in order to control and access these states during animation.
 
@@ -94,12 +93,12 @@ function AnimatedComponent() {
 
   useEffect(() => {
     function startAnimation() {
-      // 开始动画逻辑
+      // start animation logic
     }
 
     animationRef.current = startAnimation();
     return () => {
-      // 清理动画逻辑
+      // clean up animation logic
     };
   }, []);
 
@@ -109,7 +108,7 @@ function AnimatedComponent() {
 export default AnimatedComponent;
 ```
 
-### 6. 与 `forwardRef` 结合
+### 6. Combine weith `forwardRef` 
 
 `useRef` can be used with `forwardRef` to access the DOM elements or other references of child components from the parent component.
 

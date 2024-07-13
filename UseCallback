@@ -12,14 +12,14 @@ const memoizedCallback = useCallback(() => {
 
 ## Dependences
 
-- 如果依赖项数组为空，`useCallback` 的回调函数只会在组件挂载时创建一次，并保持不变。
-- 如果依赖项数组包含特定值，`useCallback` 的回调函数会在这些依赖项发生变化时重新创建。
+- If dependencies are empty, the `useCallback` callback function is created only once when the component is mounted and remains unchanged.
+- If dependencies contain specific values, the `useCallback` callback function will be recreated when these dependencies change.
 
 ```js
 const memoizedCallback = useCallback(() => {
   doSomething(a, b);
 }, [a, b]);
-// memoizedCallback 只会在 a 或 b 改变时重新创建
+// memoizedCallback is recreated only when a or b changes.
 ```
 
 ## Performance optimization
@@ -29,23 +29,23 @@ const memoizedCallback = useCallback(() => {
 
 ## Differences from useMemo
 
-- `useMemo` 用于缓存计算结果，返回缓存的值。
-- `useCallback` 用于缓存函数实例，返回缓存的函数。
+- `useMemo` is used to cache calculation results and return cached values.
+- `useCallback` is used to cache function instances and return cached functions. 
 
 ## Methods to update objects and arrays
 
-更新对象和数组时，`useCallback` 可以帮助避免不必要的重新渲染。
+When updating objects and arrays, `useCallback` can help avoid unnecessary re-renders.
 
 ```js
 const memoizedCallback = useCallback(() => {
   // Some operation
 }, []);
-// memoizedCallback 在组件生命周期内保持不变
+// memoizedCallback remains unchanged within the component's lifecycle.
 ```
 
 ## Example Code
 
-### Example 1: 避免不必要的子组件重新渲染
+### Example 1: Avoid unnecessary child component re-renders
 
 ```js
 import React, { useState, useCallback } from 'react';
@@ -74,7 +74,7 @@ const ParentComponent = () => {
 export default ParentComponent;
 ```
 
-### Example 2: 优化回调函数传递
+### Example 2: Optimize callbackfunction forwarding
 
 ```js
 import React, { useState, useCallback } from 'react';
@@ -105,4 +105,8 @@ export default App;
 
 ## Summary
 
-`useCallback` 是一个强大的工具，用于缓存函数实例，防止每次渲染时重新创建函数，从而优化性能。理解何时使用 `useCallback` 以及如何使用它来优化 React 应用程序的性能，是编写高效 React 组件的重要技能。请注意，不要滥用 `useCallback`，只在确实有性能瓶颈的情况下使用它。
+`useCallback` is a powerful tool used to cache function instances, avoiding the re-creation of functions on each render, thereby optimizing performance.
+
+Understanding when and how to use `useCallback` to optimize React application performance is an important skill for writing efficient React components.
+
+Keep in mind not to overuse `useCallback`; use it only when there are significant performance bottlenecks.
