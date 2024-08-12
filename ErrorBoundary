@@ -1,4 +1,16 @@
-# ErrorBoundary Review Process
+# ErrorBoundary
+
+In React, an Error Boundary is a technique to capture JavaScript errors within the component tree, record these errors, and display fallback UIs. An Error Boundary is achieved through a class component that implements the lifecycle methods `componentDidCatch` and `static getDerivedStateFromError`.
+
+## Summary of Error Boundary achievement
+
+1. **Create a class component**: An Error Boundary must be a class component because functional components can’t use these lifecycle methods.
+2. **Define an ErrorBoundaryState**: The `ErrorBoundaryState` has a `hasError` property to indicate if an error has been captured.
+3. **Implement** `componentDidCatch`: This method is used to capture errors in child components and handle them, such as logging the errors.
+4. **Implement** `getDerivedStateFromError`: This method is used to update the component state based on captured errors, enabling the component to display fallback UIs.
+5. **Conditional renders in** `render`: Determine whether to render fallback UIs or the child components based on the error state.
+
+## Detailed Process
 
 First of all,  an ErrorBoundary is a class component：
 

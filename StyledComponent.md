@@ -53,6 +53,19 @@ const App = () => {
 };
 ```
 
+## Pass in external variablesz
+
+```tsx
+const fontSize = 22
+
+const Button2 = styled.button`
+    background: green;
+    font-size: ${fontSize}px;
+`
+```
+
+
+
 ### Style Nesting
 
 ```jsx

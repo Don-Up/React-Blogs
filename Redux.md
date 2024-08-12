@@ -1,10 +1,19 @@
 # Redux Review 
 
+> ```
+> npm install redux react-redux redux-thunk
+> ```
+
 ## Creating a Store with createStore 
 
 ### Step One: Defining a Reducer to Create the Store
 
 It is basically the same as the default method of creating a reducer. The only difference is that you need to pass in the default state value when defining the reducer, because `useReducer` will not be used. The default state value can be passed in as the second parameter. Pass this reducer into `createStore`, which returns a store, and then export the store.
+
+```js
+const store = createStore(countReducer)
+export default store
+```
 
 ### Step Two: Provider Component
 

@@ -1,5 +1,7 @@
 # ReactRouter6
 
+> npm install react-router-dom@6
+
 1. Hierarchical structure: Router→Routes→Route.
 
 2. Router is used to enable routing functionality in applications

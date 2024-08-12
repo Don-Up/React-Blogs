@@ -4,6 +4,44 @@ Tailwind CSS is a utility-first CSS framework that allows you to write styling c
 
 The following is a comprehensive review of how to implement various common Flex layouts using Tailwind.
 
+### 1. 安装和配置 Tailwind CSS
+
+首先，安装 Tailwind CSS 及其依赖：
+
+```bash
+npm install tailwindcss postcss autoprefixer
+```
+
+然后，生成 Tailwind 配置文件：
+
+```bash
+npx tailwindcss init -p
+```
+
+在生成的 `tailwind.config.js` 中配置 Tailwind：
+
+```js
+module.exports = {
+  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+在 `src/index.css` 中导入 Tailwind 的基础样式：
+
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
 ### Basic Flex Layouts
 
 #### 1. Create a Flex container
